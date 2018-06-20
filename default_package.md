@@ -6,7 +6,10 @@
 * ejs
 * request
 * ~~body-parser~~
+* mongoose
+* dotenv
 
 ## Various App Notes
 * [Giant Bomb has an API](https://www.giantbomb.com/api/)
 * API Key: 3a2371ccbc38bdf338af59ffb0ee43ecc950dddb
+* [Hiding Secrets in Node](https://github.com/justincastilla/hiding-secrets-in-node)
