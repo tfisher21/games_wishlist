@@ -1,10 +1,16 @@
 var express = require("express"),
     app     = express(),
-    request = require("request");
+    request = require("request"),
+    mongoose = require("mongoose");
 
 require("dotenv").load();
-
+mongoose.connect("mongodb://localhost/crm");
 app.set('view engine', 'ejs');
+
+
+////////////
+// ROUTES //
+////////////
 
 app.get("/", function(req, res){
   res.render("landing");
