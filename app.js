@@ -1,23 +1,29 @@
-var express = require("express"),
-    app     = express(),
-    request = require("request"),
-    bodyParser = require("body-parser"),
-    Wishlist = require("./models/wishlist"),
-    mongoose = require("mongoose");
+var express         = require("express"),
+    app             = express(),
+    request         = require("request"),
+    bodyParser      = require("body-parser"),
+    methodOverride  = require("method-override"),
+    mongoose        = require("mongoose");
+    
+var Wishlist        = require("./models/wishlist"),
+    seedDB          = require("./seeds");
 
 require("dotenv").load();
 mongoose.connect("mongodb://localhost/crm");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
+app.use(methodOverride('_method'));
 
 // GLOBAL VARIABLES
 var apiString = "?api_key=" + process.env.gbapi + "&format=JSON";
+
+seedDB();
 
 ////////////
 // ROUTES //
 ////////////
 
-// INDEX - LANDING
+// INDEX - Wishlist page and search bar.
 app.get("/", function(req, res){
   Wishlist.find({}, function(err, allWishlists){
       if (err) {
@@ -28,7 +34,7 @@ app.get("/", function(req, res){
   });
 });
 
-// SEARCH RESULTS
+// NEW - Display Search Results.
 app.get("/search", function(req, res){
     var query = req.query.query;
     var url = "https://www.giantbomb.com/api/releases/" + apiString + "&filter=region:1,platform:157,name:" + query;
@@ -41,7 +47,7 @@ app.get("/search", function(req, res){
     });
 });
 
-// CREATE - Add selected title to wishlist
+// CREATE - Add selected title to wishlist.
 app.post("/wishlist", function(req, res){
     var url = req.body.gameAPIurl + apiString;
     
@@ -63,6 +69,16 @@ app.post("/wishlist", function(req, res){
             });
         }
     });
+});
+
+// DESTROY - Remove game from wishlist.
+app.delete("/wishlist/:id", function(req, res){
+    Wishlist.findByIdAndRemove(req.params.id, function(err){
+        if (err) {
+            console.log(err);
+        }
+        res.redirect("/");
+    })
 });
 
 //////////////////////////////

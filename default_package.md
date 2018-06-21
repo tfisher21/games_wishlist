@@ -5,9 +5,10 @@
 * express
 * ejs
 * request
-* ~~body-parser~~
+* body-parser
 * mongoose
 * dotenv
+* method-override
 
 ## Various App Notes
 * [Giant Bomb has an API](https://www.giantbomb.com/api/)
