@@ -9,3 +9,16 @@
   <li><em>First 100 results only</em></li>
   <li><em>Restricting to Nintendo Switch for now</em></li>
 </ul>
+
+<ul>
+  <% wishlist.forEach(function(wishlist){ %>
+  
+    <li>
+      <a href=<%= wishlist.gbLink %>>
+        <%= wishlist.name %> - <%= wishlist.deck %>
+      </a>
+    </li>
+    
+  
+  <% }) %>
+</ul>

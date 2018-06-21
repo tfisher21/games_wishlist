@@ -4,9 +4,13 @@
     <% link = element.site_detail_url.slice(0, element.site_detail_url.indexOf("release")) %>
     
     <li>
-      <button value=<%= element.guid %>>Add</button>
-      <%= element.name %> <a href=<%= link %>>Db Link</a>
+      <form action="/wishlist" method="POST">
+        <button name ="gameAPIurl" 
+                value=<%= element.game.api_detail_url %>>Add</button>
+        <%= element.name %> <a href=<%= link %>>Db Link</a>
+      </form>
       </li>
   <% }); %>
 </ol>
 
+<a href="/">Go Back</a>
