@@ -1,9 +1,12 @@
 <h1>Results</h1>
-
 <ol>
   <% data.results.forEach(function(element){ %>
     <% link = element.site_detail_url.slice(0, element.site_detail_url.indexOf("release")) %>
     
-    <li><%= element.name %> <a href=<%= link %>>Db Link</a></li>
+    <li>
+      <button value=<%= element.guid %>>Add</button>
+      <%= element.name %> <a href=<%= link %>>Db Link</a>
+      </li>
   <% }); %>
 </ol>
+
