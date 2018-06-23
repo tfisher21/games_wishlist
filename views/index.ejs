@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Games Wishlist</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    
+    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css">
+    
+  </head>
+
+  <body>
+    
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand">Games Wishlist</a>
+      
+      <form class="form-inline" action="/search" method="GET">
+        <input type="text" name="query">
+        <input class="btn mx-2" type="submit" value="Search">
+      </form>
+    </nav>
+    
+    <div class="container">
+      
+      <h2>Current Restrictions</h2>
+      <ul>
+        <li><em>Currently only searchable with names</em></li>
+        <li><em>First 100 results only</em></li>
+        <li><em>Restricting to Nintendo Switch for now</em></li>
+      </ul>
+      
+      
+      <!-- Wishlist populated from database. -->
+      <ul>
+        <% wishlist.forEach(function(wishlist){ %>
+        
+          <li>
+            <form action="/wishlist/<%= wishlist._id %>?_method=DELETE" method="POST">
+              <a href=<%= wishlist.gbLink %>>
+                <%= wishlist.name %> - <%= wishlist.deck %>
+              </a>
+              <button name ="removeGame">Remove</button>
+            </form>
+          </li>
+          
+        <% }) %>
+      </ul>
+    </div>
+  </body>
+</html>

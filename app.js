@@ -13,6 +13,7 @@ mongoose.connect("mongodb://localhost/crm");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(methodOverride('_method'));
+app.use(express.static(__dirname + '/public'));
 
 // GLOBAL VARIABLES
 var apiString = "?api_key=" + process.env.gbapi + "&format=JSON";
@@ -29,7 +30,7 @@ app.get("/", function(req, res){
       if (err) {
           console.log(err);
       } else {
-          res.render("landing", {wishlist: allWishlists});
+          res.render("index", {wishlist: allWishlists});
       }
   });
 });
