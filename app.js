@@ -37,6 +37,7 @@ app.get("/", function(req, res){
 
 // NEW - Display Search Results.
 app.get("/search", function(req, res){
+    
     var query = req.query.query;
     var url = "https://www.giantbomb.com/api/releases/" + apiString + "&filter=region:1,platform:157,name:" + query;
     
