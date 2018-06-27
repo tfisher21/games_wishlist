@@ -6,7 +6,7 @@
   <% wishlist.forEach(function(wishlist){ %>
     <div class="wish-item list-group-item list-group-item-action list-group-item-light">
       
-      <a class="text-danger" data-toggle="collapse" href="#removeAlert"><i class="fas fa-minus"></i></a>
+      <a class="text-danger" data-toggle="collapse" href="#removeAlert<%=wishlist._id%>"><i class="fas fa-minus"></i></a>
       
       <a class="text-muted" href=<%= wishlist.gbLink %>>
         <strong><%= wishlist.name %></strong>
@@ -15,9 +15,9 @@
       <p class="release text-muted"><em>March 31st, 2018</em></p>
     </div>
     
-    <div class="collapse" id="removeAlert">
+    <div class="collapse " id="removeAlert<%=wishlist._id%>">
       <form action="/wishlist/<%= wishlist._id %>?_method=DELETE" method="POST">
-        <button class="btn btn-danger" name="removeGame">Remove</button>
+        <button class="btn btn-danger removeAlert" name="removeGame">Remove</button>
       </form>
     </div>
   <% }) %>

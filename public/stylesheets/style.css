@@ -28,6 +28,6 @@
   float: right;
 }
 
-#removeAlert {
+.removeAlert {
   margin-bottom: 10px;
 }

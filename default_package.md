@@ -18,3 +18,7 @@
 * Design Ideas
   * [Microinteractions for to-do list app](https://dribbble.com/shots/3167358-Microinteractions-for-to-do-list-app)
   * [Be amazing today](https://dribbble.com/shots/2589690-Be-amazing-today)
+
+## Next Update
+* Mix [Accordian Collapse](http://getbootstrap.com/docs/4.1/components/collapse/#accordion-example) and [Cards](http://getbootstrap.com/docs/4.1/components/collapse/#accordion-example) stylings.
+* How can I use animations to center the game name in the header and move the date to the bottom?
