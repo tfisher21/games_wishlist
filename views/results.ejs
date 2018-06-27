@@ -1,20 +1,32 @@
 <% include ./partials/header %>
 
-<h1>Results</h1>
-<ol>
+<div id="wishlist" class="container">
+  <h1>Results</h1>
+
   <% data.results.forEach(function(element){ %>
     <% link = element.site_detail_url.slice(0, element.site_detail_url.indexOf("release")) %>
     
-    <li>
+    <div class="wish-item list-group-item list-group-item-action list-group-item-light">
+      
+      <a class="text-success" data-toggle="collapse" href="#addAlert<%= element.id %>"><i class="fas fa-plus"></i></a>
+      
+      <a class="text-muted" href=<%= link %>>
+        <strong><%= element.name %></strong>
+      </a>
+      
+    </div>
+    
+    <div class="collapse " id="addAlert<%= element.id %>">
       <form action="/wishlist" method="POST">
-        <button name ="gameAPIurl" 
-                value=<%= element.game.api_detail_url %>>Add</button>
-        <%= element.name %> <a href=<%= link %>>Db Link</a>
+        <button class="btn btn-success removeAddAlert"
+                name="gameAPIurl"
+                value=<%= element.game.api_detail_url %>>
+          Add
+        </button>
       </form>
-    </li>
-  <% }); %>
-</ol>
+    </div>
+  <% }) %>
 
-<a href="/">Go Back</a>
+</div>
 
 <% include ./partials/footer %>
