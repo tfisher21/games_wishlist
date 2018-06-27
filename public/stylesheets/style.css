@@ -20,14 +20,10 @@
 #wishlist {
   padding-top: 10px;
 }
-.wish-item {
+.card {
   margin-bottom: 10px;
 }
 
 .release {
   float: right;
-}
-
-.removeAddAlert {
-  margin-bottom: 10px;
 }
