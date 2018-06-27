@@ -1,18 +1,24 @@
 <% include ./partials/header %>
 
-<div class="container">
+<div id="wishlist" class="container">
 
 <!-- Wishlist populated from database. -->
   <% wishlist.forEach(function(wishlist){ %>
-    <div class="list-group-item list-group-item-action list-group-item-light">
+    <div class="wish-item list-group-item list-group-item-action list-group-item-light">
+      
+      <a class="text-danger" data-toggle="collapse" href="#removeAlert"><i class="fas fa-minus"></i></a>
+      
       <a class="text-muted" href=<%= wishlist.gbLink %>>
-        <strong><%= wishlist.name %></strong> - <%= wishlist.deck %>
+        <strong><%= wishlist.name %></strong>
       </a>
       
+      <p class="release text-muted"><em>March 31st, 2018</em></p>
+    </div>
+    
+    <div class="collapse" id="removeAlert">
       <form action="/wishlist/<%= wishlist._id %>?_method=DELETE" method="POST">
-        <button class="btn btn-danger" name ="removeGame">Remove</button>
+        <button class="btn btn-danger" name="removeGame">Remove</button>
       </form>
-      
     </div>
   <% }) %>
 

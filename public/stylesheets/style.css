@@ -1,3 +1,33 @@
+/*NavBar Styling*/
+
 #nav-form {
   display: inline-block;
+}
+
+
+/*Restriction Alert Styling*/
+
+#collapseRestrictions {
+  opacity: 1;
+  text-align: center;
+}
+
+#collapseRestrictions ul {
+  list-style: none;
+}
+
+/*List Styling*/
+#wishlist {
+  padding-top: 10px;
+}
+.wish-item {
+  margin-bottom: 10px;
+}
+
+.release {
+  float: right;
+}
+
+#removeAlert {
+  margin-bottom: 10px;
 }
