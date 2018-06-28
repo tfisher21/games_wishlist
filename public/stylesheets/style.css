@@ -1,9 +1,16 @@
 /*NavBar Styling*/
 
+.navbar-brand {
+  font-family: 'Carter One', cursive;
+}
+
 #nav-form {
   display: inline-block;
 }
 
+#navAuth {
+  margin-left: 8px;
+}
 
 /*Restriction Alert Styling*/
 
