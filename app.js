@@ -39,7 +39,7 @@ app.get("/", function(req, res){
 app.get("/search", function(req, res){
     
     var query = req.query.query;
-    var url = "https://www.giantbomb.com/api/releases/" + apiString + "&filter=region:1,platform:157,name:" + query;
+    var url = "https://www.giantbomb.com/api/games/" + apiString + "&filter=platforms:157,name:" + query;
     
     request(url, function(error, response, body){
         if (!error && response.statusCode == 200) {
