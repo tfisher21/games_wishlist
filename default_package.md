@@ -29,4 +29,7 @@
 * login/signup
 * How can I add the deck to the search results?
 * Mobile friendly
-* improve search options
+* Improve search options
+* Add publisher/developer and genre information.
+* Is it better to continue pulling from the API, or minimize the times you pull from it?
+* Add webapp start animation akin to pulling a physical game off a shelf.
