@@ -23,13 +23,14 @@
 * [Microinteractions for to-do list app](https://dribbble.com/shots/3167358-Microinteractions-for-to-do-list-app)
 * [Be amazing today](https://dribbble.com/shots/2589690-Be-amazing-today)
 
-## Next Update
+## Future Updates
 * How can I use animations to center the game name in the header and move the date to the bottom?
 * Remove restrictions
-* login/signup
+* User Authentication
 * How can I add the deck to the search results?
 * Mobile friendly
 * Improve search options
 * Add publisher/developer and genre information.
 * Is it better to continue pulling from the API, or minimize the times you pull from it?
 * Add webapp start animation akin to pulling a physical game off a shelf.
+* As this app evolves from simple wishlist into a full game cataloging app, we need to update options to add to library/wishlist/etc.
