@@ -39,7 +39,7 @@ app.get("/", function(req, res){
 app.get("/search", function(req, res){
     
     var query = req.query.query;
-    var url = "https://www.giantbomb.com/api/games/" + apiString + "&filter=platforms:157,name:" + query;
+    var url = "https://www.giantbomb.com/api/games/" + apiString + "&sort=name:down&filter=platforms:157,name:" + query;
     
     request(url, function(error, response, body){
         if (!error && response.statusCode == 200) {
@@ -51,24 +51,16 @@ app.get("/search", function(req, res){
 
 // CREATE - Add selected title to wishlist.
 app.post("/wishlist", function(req, res){
-    var url = req.body.gameAPIurl + apiString;
+    var name = req.body.name;
+    var gbLink = req.body.gbLink;
+    var deck = req.body.deck;
+    var newWishlist = {name: name, gbLink: gbLink, deck: deck};
     
-    request(url, function(error, response, body){
-        if (!error && response.statusCode == 200) {
-            var data = JSON.parse(body);
-            
-            var name = data.results.name;
-            var gbLink = data.results.site_detail_url;
-            var deck = data.results.deck;
-            var newWishlist = {name: name, gbLink: gbLink, deck: deck};
-            
-            Wishlist.create(newWishlist, function(err, newlyCreated){
-                if (err) {
-                    console.log(err);
-                } else {
-                    res.redirect("/");
-                }
-            });
+    Wishlist.create(newWishlist, function(err, newlyCreated){
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect("/");
         }
     });
 });

@@ -24,13 +24,27 @@
 * [Be amazing today](https://dribbble.com/shots/2589690-Be-amazing-today)
 
 ## Future Updates
-* How can I use animations to center the game name in the header and move the date to the bottom?
-* Remove restrictions
 * User Authentication
-* How can I add the deck to the search results?
-* Mobile friendly
-* Improve search options
-* Add publisher/developer and genre information.
-* Is it better to continue pulling from the API, or minimize the times you pull from it?
+* Allow separate lists (wishlist, tracking, owned, etc.)
+* How can I use animations to center the game name in the header and move the date to the bottom?
+  * Is this jQuery, DOM manipulation, or something else?
 * Add webapp start animation akin to pulling a physical game off a shelf.
-* As this app evolves from simple wishlist into a full game cataloging app, we need to update options to add to library/wishlist/etc.
+* Is it better to continue pulling from the API, or minimize the times you pull from it
+* Would a more traditional grid and card system be a better UI?
+
+### Improve Search branch
+* Remove search restrictions
+* pull release date
+  * distinguish between future release and current release
+* Add search options
+* Expand data saved
+  * release
+  * publisher
+  * developer
+  * genre
+  * image/icon
+  * platforms
+* Pull Publisher, Developer, and primary genre
+* Add deck to search results
+* Pull image/icon to use in list.
+* Pull platforms

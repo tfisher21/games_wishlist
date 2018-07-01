@@ -9,9 +9,10 @@
       <div class="list-group-item list-group-item-action list-group-item-light">
         
         <form action="/wishlist" method="POST">
-          <button class="btn btn-link text-success"
-                  name="gameAPIurl"
-                  value=<%= element.api_detail_url %>>
+          <input  type="hidden" name="name" value="<%= element.name %>">
+          <input  type="hidden" name="gbLink" value="<%= element.site_detail_url %>">
+          <input  type="hidden" name="deck" value="<%= element.deck %>">
+          <button class="btn btn-link text-success" type="submit">
             <i class="fas fa-plus"></i>
           </button>
         
