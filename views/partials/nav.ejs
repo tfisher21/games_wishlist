@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="/">
+    <i class="fas fa-stream"></i>
+    Cartridge Recall
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item navbar-text text-light">
+        <em>the premier cataloging app for your games!</em>
+      </li>
+    </ul>
+    
+    <a class="nav-link text-secondary" data-toggle="collapse" href="#collapseRestrictions">
+      Restrictions
+    </a>
+    
+    <form class="form-inline" action="/search" method="GET">
+      <input class="form-control mt-2 mt-lg-0 mr-lg-2" name="query" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-sm btn-outline-secondary my-2 my-lg-0 mr-lg-2" type="submit">Search</button>
+    </form>
+    
+    <div class="btn-group nav-item mt-2 mt-lg-0">
+      <a class="btn btn-sm btn-outline-secondary" href="#">Login</a>
+      <a class="btn btn-sm btn-outline-secondary" href="#">Signup</a>
+    </div>
+  </div>
+</nav>
+
+<!--Restrictions Info Pane-->
+<div class="container">
+  <div class="collapse" id="collapseRestrictions">
+    <div class="alert" role="alert">
+      <ul>
+        <li><em>Currently only searchable with names</em></li>
+        <li><em>First 100 results only</em></li>
+        <li><em>Restricting to Nintendo Switch for now</em></li>
+        <li><em>Set to only search for US releases</em></li>
+      </ul>
+    </div>
+  </div> 
+</div>

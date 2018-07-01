@@ -1,59 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cartridge Recall | The premier cataloging app for your games!</title>
+    <!-- Required meta tags -->
     
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    
+    <!--CSS Imports-->
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Carter+One" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css">
     
+    
+    <!--JS Imports-->
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
     
-    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css">
+    <title>Cartridge Recall | The premier cataloging app for your games!</title>
     
   </head>
 
   <body>
     
-    <!--Navigation Bar-->
-    <nav class="navbar sticky-top navbar-light bg-secondary">
-      <div id="col1" class="col">
-        <a class="navbar-brand text-light" href="/">
-          <i class="fas fa-stream"></i>
-          Cartridge Recall
-        </a> 
-        
-        <span class="navbar-text text-light"><em>the premier cataloging app for your games!</em></span>
-      </div>
-      
-      <!--Search and Login/Signup-->
-      <form id="nav-form" class="form-inline mr-2" action="/search" method="GET">
-          <input class="form-control form-control-sm" name="query" type="search">
-          <button class="btn btn-sm btn-outline-light" type="submit">Search</button>
-      </form>
-      
-      <a id="restrictions" class="text-dark" data-toggle="collapse" href="#collapseRestrictions">
-        Restrictions
-      </a>
-      
-      <div id="navAuth" class="btn-group">
-        <a class="btn btn-sm btn-outline-dark" href="#">Login</a>
-        <a class="btn btn-sm btn-outline-dark" href="#">Signup</a>
-      </div>
-    </nav>
-    
-    <!--Restrictions Info Pane-->
-    <div class="container">
-      <div class="collapse" id="collapseRestrictions">
-        <div class="alert alert-secondary" role="alert">
-          <ul>
-            <li><em>Currently only searchable with names</em></li>
-            <li><em>First 100 results only</em></li>
-            <li><em>Restricting to Nintendo Switch for now</em></li>
-            <li><em>Set to only search for US releases</em></li>
-          </ul>
-        </div>
-      </div> 
-    </div>
+    <% include ./nav %>
