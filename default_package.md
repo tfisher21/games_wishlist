@@ -38,13 +38,10 @@
   * distinguish between future release and current release
 * Add search options
 * Expand data saved
-  * release
   * publisher
   * developer
   * genre
-  * image/icon
   * platforms
-* Pull Publisher, Developer, and primary genre
 * Add deck to search results
 * Pull image/icon to use in list.
 * Pull platforms

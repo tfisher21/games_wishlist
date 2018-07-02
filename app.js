@@ -54,7 +54,15 @@ app.post("/wishlist", function(req, res){
     var name = req.body.name;
     var gbLink = req.body.gbLink;
     var deck = req.body.deck;
-    var newWishlist = {name: name, gbLink: gbLink, deck: deck};
+    var release = req.body.release;
+    var icon = req.body.icon;
+    var newWishlist = {
+        name: name,
+        gbLink: gbLink,
+        deck: deck,
+        release: release,
+        icon: icon
+    };
     
     Wishlist.create(newWishlist, function(err, newlyCreated){
         if (err) {

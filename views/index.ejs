@@ -4,17 +4,25 @@
   <% wishlist.forEach(function(wishlist){ %>
     <div class="card">
       <div class="list-group-item list-group-item-action list-group-item-light">
-        
-        <form action="/wishlist/<%= wishlist._id %>?_method=DELETE" method="POST">
-          <button class="btn btn-link text-danger" name="removeGame"><i class="fas fa-minus"></i></button>
-        
-          <a class="btn btn-link text-muted" data-toggle="collapse" href="#collapse<%=wishlist._id%>">
-            <strong><%= wishlist.name %></strong>
+        <div class="media">
+          <a href="<%= wishlist.gbLink %>">
+            <img class="img-thumbnail" src="<%= wishlist.icon %>"></img>
           </a>
-          
-          <p class="release text-muted"><em>March 31st, 2018</em></p>
-        
-        </form>
+          <div class="media-body">
+            <form action="/wishlist/<%= wishlist._id %>?_method=DELETE" method="POST">
+              <a class="btn btn-link text-muted" data-toggle="collapse" href="#collapse<%=wishlist._id%>">
+                <strong><%= wishlist.name %></strong>
+              </a>
+              
+              <p class="release text-muted">
+                <em><%= wishlist.release %></em>
+                <button class="btn btn-link text-danger" name="removeGame">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </p>
+            </form>
+          </div>
+        </div>
       </div>
   
       <div id="collapse<%=wishlist._id%>" class="collapse" data-parent="#wishlist">
