@@ -45,3 +45,4 @@
 * Add deck to search results
 * Pull image/icon to use in list.
 * Pull platforms
+* Move Search out of nav and to the top.

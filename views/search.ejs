@@ -1,7 +1,7 @@
 <% include ./partials/header %>
 
-<div class="container" id="game">
-  <h2>Search Results</h2>
+<div class="container" id="gameList">
+  <h2>Search Results for: <em class="text-secondary">"<%= query %>"</em></h2>
   
   <% today = new Date() %>
   
@@ -12,11 +12,11 @@
     <div class="card">
       <div class="list-group-item list-group-item-action list-group-item-light">
         <div class="media">
-          <a href="<%=link%>">
+          <a href="<%= link %>">
             <img class="img-thumbnail" src="<%= element.image.icon_url %>"></img>
           </a>
           <div class="media-body">
-             <form action="/wishlist" method="POST">
+             <form action="/games" method="POST">
               <input  type="hidden" name="name" value="<%= element.name %>">
               <input  type="hidden" name="gbLink" value="<%= element.site_detail_url %>">
               <input  type="hidden" name="deck" value="<%= element.deck %>">

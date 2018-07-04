@@ -5,7 +5,7 @@ var express         = require("express"),
     methodOverride  = require("method-override"),
     mongoose        = require("mongoose");
     
-var Wishlist        = require("./models/wishlist"),
+var Game        = require("./models/game"),
     seedDB          = require("./seeds");
 
 require("dotenv").load();
@@ -24,19 +24,19 @@ seedDB();
 // ROUTES //
 ////////////
 
-// INDEX - Wishlist page and search bar.
-app.get("/", function(req, res){
-  Wishlist.find({}, function(err, allWishlists){
+// INDEX - List games currently in database.
+app.get("/games", function(req, res){
+  Game.find({}, function(err, allGames){
       if (err) {
           console.log(err);
       } else {
-          res.render("index", {wishlist: allWishlists});
+          res.render("games", {games: allGames});
       }
   });
 });
 
 // NEW - Display Search Results.
-app.get("/search", function(req, res){
+app.get("/games/search", function(req, res){
     
     var query = req.query.query;
     var url = "https://www.giantbomb.com/api/games/" + apiString + "&sort=name:down&filter=platforms:157,name:" + query;
@@ -44,27 +44,25 @@ app.get("/search", function(req, res){
     request(url, function(error, response, body){
         if (!error && response.statusCode == 200) {
             var data = JSON.parse(body);
-            res.render("results", {data:data});
+            res.render("search", {query:query, data:data});
         }
     });
 });
 
-// CREATE - Add selected title to wishlist.
-app.post("/wishlist", function(req, res){
+// CREATE - Add selected game to database.
+app.post("/games", function(req, res){
     var name = req.body.name;
     var gbLink = req.body.gbLink;
-    var deck = req.body.deck;
     var release = req.body.release;
     var icon = req.body.icon;
-    var newWishlist = {
+    var newGame = {
         name: name,
         gbLink: gbLink,
-        deck: deck,
         release: release,
         icon: icon
     };
     
-    Wishlist.create(newWishlist, function(err, newlyCreated){
+    Game.create(newGame, function(err, newlyCreated){
         if (err) {
             console.log(err);
         } else {
@@ -73,9 +71,9 @@ app.post("/wishlist", function(req, res){
     });
 });
 
-// DESTROY - Remove game from wishlist.
-app.delete("/wishlist/:id", function(req, res){
-    Wishlist.findByIdAndRemove(req.params.id, function(err){
+// DESTROY - Remove game from game.
+app.delete("/games/:id", function(req, res){
+    Game.findByIdAndRemove(req.params.id, function(err){
         if (err) {
             console.log(err);
         }

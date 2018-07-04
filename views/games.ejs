@@ -1,21 +1,21 @@
 <% include ./partials/header %>
 
-<div class="container" id="wishlist">
-  <% wishlist.forEach(function(wishlist){ %>
+<div class="container" id="gameList">
+  <% games.forEach(function(game){ %>
     <div class="card">
       <div class="list-group-item list-group-item-action list-group-item-light">
         <div class="media">
-          <a href="<%= wishlist.gbLink %>">
-            <img class="img-thumbnail" src="<%= wishlist.icon %>"></img>
+          <a href="<%= game.gbLink %>">
+            <img class="img-thumbnail" src="<%= game.icon %>"></img>
           </a>
           <div class="media-body">
-            <form action="/wishlist/<%= wishlist._id %>?_method=DELETE" method="POST">
-              <a class="btn btn-link text-muted" data-toggle="collapse" href="#collapse<%=wishlist._id%>">
-                <strong><%= wishlist.name %></strong>
+            <form action="/games/<%= game._id %>?_method=DELETE" method="POST">
+              <a class="btn btn-link text-muted" data-toggle="collapse" href="#collapse<%=game._id%>">
+                <strong><%= game.name %></strong>
               </a>
               
               <p class="release text-muted">
-                <em><%= wishlist.release %></em>
+                <em><%= game.release %></em>
                 <button class="btn btn-link text-danger" name="removeGame">
                   <i class="fas fa-minus"></i>
                 </button>
@@ -25,9 +25,9 @@
         </div>
       </div>
   
-      <div id="collapse<%=wishlist._id%>" class="collapse" data-parent="#wishlist">
+      <div id="collapse<%=game._id%>" class="collapse" data-parent="#wishlist">
         <div class="card-body">
-          <%= wishlist.deck %>
+          <%= game.deck %>
         </div>
       </div>
     </div>
