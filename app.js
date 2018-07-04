@@ -1,9 +1,10 @@
-var express         = require("express"),
-    app             = express(),
-    request         = require("request"),
-    bodyParser      = require("body-parser"),
-    methodOverride  = require("method-override"),
-    mongoose        = require("mongoose");
+const   express         = require("express"),
+        app             = express(),
+        request         = require("request"),
+        bodyParser      = require("body-parser"),
+        methodOverride  = require("method-override"),
+        mongoose        = require("mongoose"),
+        igdb            = require('igdb-api-node').default;
     
 var Game        = require("./models/game"),
     seedDB          = require("./seeds");
@@ -16,13 +17,19 @@ app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
 
 // GLOBAL VARIABLES
-var apiString = "?api_key=" + process.env.gbapi + "&format=JSON";
+const userKey = process.env.user_key;
+const client = igdb(userKey);
 
 seedDB();
 
 ////////////
 // ROUTES //
 ////////////
+
+// Home Route
+app.get("/", function(req, res) {
+    res.redirect("/games");
+});
 
 // INDEX - List games currently in database.
 app.get("/games", function(req, res){
@@ -38,26 +45,36 @@ app.get("/games", function(req, res){
 // NEW - Display Search Results.
 app.get("/games/search", function(req, res){
     
-    var query = req.query.query;
-    var url = "https://www.giantbomb.com/api/games/" + apiString + "&sort=name:down&filter=platforms:157,name:" + query;
+  var query = req.query.query;
     
-    request(url, function(error, response, body){
-        if (!error && response.statusCode == 200) {
-            var data = JSON.parse(body);
-            res.render("search", {query:query, data:data});
-        }
-    });
+  client.games({
+    limit: 50,
+    filters: {
+      'platforms-eq': 130,
+    },
+    search: query
+  }, [
+    'name',
+    'url',
+    'first_release_date',
+    'cover'
+  ]).then(response => {
+    // res.send(response.body); // response.body contains the parsed JSON response to this query
+    res.render('search', {data: response.body, query: query});
+  }).catch(error => {
+      throw error;
+  });
 });
 
 // CREATE - Add selected game to database.
 app.post("/games", function(req, res){
     var name = req.body.name;
-    var gbLink = req.body.gbLink;
+    var link = req.body.gbLink;
     var release = req.body.release;
     var icon = req.body.icon;
     var newGame = {
         name: name,
-        gbLink: gbLink,
+        link: link,
         release: release,
         icon: icon
     };

@@ -1,33 +1,30 @@
 <% include ./partials/header %>
   <div class="container" id="gameList">
-  <h2 class="text-light">Search Results for: <em class="text-secondary">"<%= query %>"</em></h2>
+  <h2 class="text-dark">Search Results for: <em class="text-secondary">"<%= query %>"</em></h2>
   
-  <% today = new Date() %>
-  
-  <% data.results.forEach(function(element){ %>
-    <% releaseDate = new Date(element.original_release_date) %>
-    <% link = element.site_detail_url.slice(0, element.site_detail_url.indexOf("release")) %>
+  <% data.forEach(function(game) { %>
+    
+    <% release = new Date(game.first_release_date) %>
     
     <div class="card">
       <div class="list-group-item list-group-item-action list-group-item-light">
         <div class="media">
-          <a href="<%= link %>">
-            <img class="img-thumbnail" src="<%= element.image.icon_url %>"></img>
+          <a href="#">
+            <img class="img-thumbnail" src="<%= game.cover.url %>"></img>
           </a>
           <div class="media-body">
              <form action="/games" method="POST">
-              <input  type="hidden" name="name" value="<%= element.name %>">
-              <input  type="hidden" name="gbLink" value="<%= element.site_detail_url %>">
-              <input  type="hidden" name="deck" value="<%= element.deck %>">
-              <input  type="hidden" name="release" value="<%= element.original_release_date %>">
-              <input  type="hidden" name="icon" value="<%= element.image.icon_url %>">
+              <input  type="hidden" name="name" value="<%= game.name %>">
+              <input  type="hidden" name="link" value="<%= game.url %>">
+              <input  type="hidden" name="release" value="<%= release %>">
+              <input  type="hidden" name="icon" value="<%= game.cover.url %>">
             
-              <a class="btn btn-link text-muted" data-toggle="collapse" href="#collapse<%= element.id %>">
-                <strong><%= element.name %></strong>
+              <a class="btn btn-link text-muted" data-toggle="collapse" href="#collapse">
+                <strong><%= game.name %></strong>
               </a>
               
               <p class="release text-muted">
-                <em><%= releaseDate %></em>
+                <em><%= release.toDateString() %></em>
                 <button class="btn btn-link text-success" type="submit">
                   <i class="fas fa-plus"></i>
                 </button>
@@ -38,13 +35,13 @@
         </div>
       </div>
       
-      <div id="collapse<%= element.id %>" class="collapse" data-parent="#game">
+      <div id="collapse" class="collapse" data-parent="#game">
         <div class="card-body">
-          <%= element.deck %>
+          Deck
         </div>
       </div>
     </div>
-  <% }) %>
+  <% }); %>
 </div>
 
 <% include ./partials/footer %>

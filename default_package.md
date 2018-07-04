@@ -9,10 +9,11 @@
 * mongoose
 * dotenv
 * method-override
+* igdb-api-node
 
 ## Various App Notes
-* [Giant Bomb has an API](https://www.giantbomb.com/api/)
-  * API Key: 3a2371ccbc38bdf338af59ffb0ee43ecc950dddb
+* [Internet Game Database (IGDb)](https://igdb.github.io/api/)
+  * User Key: 19952379ada061b28c8e6115c7f11c25
 * [Bootstrap - The most popular HTML, CSS, and JS library in the world.](http://getbootstrap.com/)
 * [Icons | Font Awesome](https://fontawesome.com/icons/)
 * [Hiding Secrets in Node](https://github.com/justincastilla/hiding-secrets-in-node)
