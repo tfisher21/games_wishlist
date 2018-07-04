@@ -1,3 +1,12 @@
+/* General Styling */
+body {
+  height: 1vh;
+}
+
+.container-fluid {
+  padding: 10px 0;
+}
+
 /*NavBar Styling*/
 
 .navbar-brand {
