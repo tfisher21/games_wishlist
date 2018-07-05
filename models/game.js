@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 var gameSchema = new mongoose.Schema({
   name: String,
   gbLink: String,
-  release: String,
+  release: Date,
   icon: String
 });
 

@@ -47,3 +47,4 @@
 * Pull image/icon to use in list.
 * Pull platforms
 * Move Search out of nav and to the top.
+* We can add searchable DLC at some point.

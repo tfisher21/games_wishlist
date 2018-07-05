@@ -5,7 +5,7 @@
     <div class="card">
       <div class="list-group-item list-group-item-action list-group-item-light">
         <div class="media">
-          <a href="<%= game.gbLink %>">
+          <a href="<%= game.link %>">
             <img class="img-thumbnail" src="<%= game.icon %>"></img>
           </a>
           <div class="media-body">
@@ -15,7 +15,7 @@
               </a>
               
               <p class="release text-muted">
-                <em><%= game.release %></em>
+                <em><%= game.release.toDateString() %></em>
                 <button class="btn btn-link text-danger" name="removeGame">
                   <i class="fas fa-minus"></i>
                 </button>
@@ -27,7 +27,7 @@
   
       <div id="collapse<%=game._id%>" class="collapse" data-parent="#wishlist">
         <div class="card-body">
-          <%= game.deck %>
+          TBD
         </div>
       </div>
     </div>

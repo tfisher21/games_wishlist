@@ -3,21 +3,37 @@
   <h2 class="text-dark">Search Results for: <em class="text-secondary">"<%= query %>"</em></h2>
   
   <% data.forEach(function(game) { %>
-    
-    <% release = new Date(game.first_release_date) %>
+  
+    <%
+    var release;
+    game.release_dates.forEach(function(date){
+      if (date.platform === 130) {
+        release = new Date(date.date);
+        return;
+      }
+    });
+    %>
     
     <div class="card">
       <div class="list-group-item list-group-item-action list-group-item-light">
         <div class="media">
           <a href="#">
-            <img class="img-thumbnail" src="<%= game.cover.url %>"></img>
+            <% if (!game.cover) { %>
+              <img class="img-thumbnail" src="#"></img>
+            <%} else { %>
+              <img class="img-thumbnail" src="<%= game.cover.url %>"></img>
+            <% } %>
           </a>
           <div class="media-body">
              <form action="/games" method="POST">
               <input  type="hidden" name="name" value="<%= game.name %>">
               <input  type="hidden" name="link" value="<%= game.url %>">
               <input  type="hidden" name="release" value="<%= release %>">
-              <input  type="hidden" name="icon" value="<%= game.cover.url %>">
+              <% if (!game.cover) { %>
+                <input  type="hidden" name="icon" value="#">
+              <%} else { %>
+                <input  type="hidden" name="icon" value="<%= game.cover.url  %>">
+              <% } %>
             
               <a class="btn btn-link text-muted" data-toggle="collapse" href="#collapse">
                 <strong><%= game.name %></strong>

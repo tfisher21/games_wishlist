@@ -51,12 +51,14 @@ app.get("/games/search", function(req, res){
     limit: 50,
     filters: {
       'platforms-eq': 130,
+      'version_parent-not_exists': 1,
+      'game-not_exists': 1
     },
     search: query
   }, [
     'name',
     'url',
-    'first_release_date',
+    'release_dates',
     'cover'
   ]).then(response => {
     // res.send(response.body); // response.body contains the parsed JSON response to this query
