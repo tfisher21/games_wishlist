@@ -54,12 +54,20 @@ app.get("/games/search", function(req, res){
       'version_parent-not_exists': 1,
       'game-not_exists': 1
     },
-    search: query
+    search: query,
+    
+    // DISABLED WHILE ON LIMITED EXPAND REQUESTS (100/MONTH)
+    // expand: [
+    //   'developers',
+    //   'publishers'
+    // ]
+    
   }, [
     'name',
     'url',
     'release_dates',
-    'cover'
+    'cover',
+    'developers'
   ]).then(response => {
     // res.send(response.body); // response.body contains the parsed JSON response to this query
     res.render('search', {data: response.body, query: query});
@@ -74,11 +82,15 @@ app.post("/games", function(req, res){
     var link = req.body.gbLink;
     var release = req.body.release;
     var icon = req.body.icon;
+    var publisher = req.body.publisher;
+    var developer = req.body.developer;
     var newGame = {
         name: name,
         link: link,
         release: release,
-        icon: icon
+        icon: icon,
+        publisher: publisher,
+        developer: developer
     };
     
     Game.create(newGame, function(err, newlyCreated){

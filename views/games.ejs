@@ -1,34 +1,49 @@
 <% include ./partials/header %>
-
+          
 <div class="container" id="gameList">
   <% games.forEach(function(game){ %>
+    <form action="/games/<%= game._id %>?_method=DELETE" method="POST">
+    </form>
+    
     <div class="card">
       <div class="list-group-item list-group-item-action list-group-item-light">
-        <div class="media">
-          <a href="<%= game.link %>">
-            <img class="img-thumbnail" src="<%= game.icon %>"></img>
-          </a>
-          <div class="media-body">
-            <form action="/games/<%= game._id %>?_method=DELETE" method="POST">
-              <a class="btn btn-link text-muted" data-toggle="collapse" href="#collapse<%=game._id%>">
-                <strong><%= game.name %></strong>
-              </a>
-              
-              <p class="release text-muted">
-                <em><%= game.release.toDateString() %></em>
-                <button class="btn btn-link text-danger" name="removeGame">
-                  <i class="fas fa-minus"></i>
-                </button>
-              </p>
-            </form>
+        <div class="row">
+          
+          <div class="cover mr-2 col-md-1">
+            <!--<div class="row">-->
+            <!--  <button class="mx-auto btn btn-link text-danger" name="removeGame">-->
+            <!--    <i class="fas fa-minus"></i>-->
+            <!--  </button>-->
+            <!--</div>-->
+            
+            <a href="<%= game.link %>">
+              <img class="rounded" src="<%= game.icon %>"></img>
+            </a>
           </div>
+          
+          <div class="col-md">
+            <a class="text-dark" data-toggle="collapse" href="#collapse<%=game._id%>">
+              <strong><%= game.name %></strong> 
+            </a>
+            
+            <em><%= game.developer %>, <%= game.publisher %></em>
+          </div>
+            
+          <div class="col-md-auto">
+            <% if (Date.now() <= game.release ) { %>
+              <em class="float-right text-dark bg-danger"> <%= game.release.toDateString() %> </em>
+            <% } else { %>
+              <em class ="float-right text-muted"><%= game.release.toDateString() %></em>
+            <% } %>
+          </div>
+            
         </div>
       </div>
+    </div>
   
-      <div id="collapse<%=game._id%>" class="collapse" data-parent="#wishlist">
-        <div class="card-body">
-          TBD
-        </div>
+    <div id="collapse<%=game._id%>" class="collapse" data-parent="#wishlist">
+      <div class="card-body">
+        TBD
       </div>
     </div>
   <% }) %>

@@ -4,21 +4,27 @@ var mongoose  = require("mongoose"),
 var data = [
   {
   name: "Sushi Striker: The Way of Sushido",
-  gbLink: "https://www.giantbomb.com/sushi-striker-the-way-of-sushido/3030-59953/",
-  release: "2018-06-08 00:00:00",
-  icon: "https://www.giantbomb.com/api/image/square_avatar/2946301-3ds_sushistrikerthewayofsushido_e32017_illustration_03.jpg"
+  link: "https://www.igdb.com/games/sushi-striker-the-way-of-sushido",
+  release: 1528416000000,
+  icon: "//images.igdb.com/igdb/image/upload/t_thumb/sug0d4uw9suvcfrzccwe.jpg",
+  developer: "Nintendo EPD",
+  publisher: "Nintendo"
   },
   {
-  name: "Mario Kart 8",
-  gbLink: "https://www.giantbomb.com/mario-kart-8/3030-42929/",
-  release: "2014-05-29 00:00:00",
-  icon: "https://www.giantbomb.com/api/image/square_avatar/2600974-12510938343_01c49da2be_o.jpg"
+  name: "Mario Kart 8 Deluxe",
+  link: "https://www.igdb.com/games/mario-kart-8-deluxe",
+  release: "1493337600000",
+  icon: "//images.igdb.com/igdb/image/upload/t_thumb/ofpojlma3eib4bozxu4e.jpg",
+  developer: "Nintendo EPD",
+  publisher: "Nintendo"
   },
   {
   name: "The Legend of Zelda: Breath of the Wild",
-  gbLink: "https://www.giantbomb.com/the-legend-of-zelda-breath-of-the-wild/3030-41355/",
-  release: "2017-03-03 00:00:00",
-  icon: "https://www.giantbomb.com/api/image/square_avatar/2920687-the%20legend%20of%20zelda%20-%20breath%20of%20the%20wild%20v7.jpg"
+  link: "https://www.igdb.com/games/the-legend-of-zelda-breath-of-the-wild",
+  release: "1488499200000",
+  icon: "//images.igdb.com/igdb/image/upload/t_thumb/mievpzb9rbzzenmznvnr.jpg",
+  developer: "Nintendo EPD",
+  publisher: "Nintendo"
   }
 ];
 

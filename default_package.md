@@ -32,6 +32,7 @@
 * Add webapp start animation akin to pulling a physical game off a shelf.
 * Is it better to continue pulling from the API, or minimize the times you pull from it
 * Would a more traditional grid and card system be a better UI?
+* Four initial list types: Played, Wishlist, Replay, Future Release
 
 ### Improve Search branch
 * Remove search restrictions
@@ -39,8 +40,6 @@
   * distinguish between future release and current release
 * Add search options
 * Expand data saved
-  * publisher
-  * developer
   * genre
   * platforms
 * Add deck to search results

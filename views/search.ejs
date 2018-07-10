@@ -3,7 +3,7 @@
   <h2 class="text-dark">Search Results for: <em class="text-secondary">"<%= query %>"</em></h2>
   
   <% data.forEach(function(game) { %>
-  
+    
     <%
     var release;
     game.release_dates.forEach(function(date){
@@ -19,7 +19,8 @@
         <div class="media">
           <a href="#">
             <% if (!game.cover) { %>
-              <img class="img-thumbnail" src="#"></img>
+              <!--<img class="img-thumbnail" src="/images/file-image-regular.svg"></img>-->
+              <div class="img-thumbnail"><i class="text-muted fas fa-file-image fa-6x"></i></div>
             <%} else { %>
               <img class="img-thumbnail" src="<%= game.cover.url %>"></img>
             <% } %>
@@ -35,12 +36,38 @@
                 <input  type="hidden" name="icon" value="<%= game.cover.url  %>">
               <% } %>
             
+            
               <a class="btn btn-link text-muted" data-toggle="collapse" href="#collapse">
                 <strong><%= game.name %></strong>
               </a>
               
+              <div class="text-muted">
+                <%  if (game.developers) { %>
+                  <%= game.developers[0].name %>
+                  <input  type="hidden" name="developer" value="<%= game.developers[0].name %>">
+                <%  } else {  %>
+                  N/A
+                  <input  type="hidden" name="developer" value="N/A">
+                <%  }  %>
+              </div>
+              
+              <div class="text-muted">
+                <%  if (game.publishers) { %>
+                  <%= game.publishers[0].name %>
+                  <input  type="hidden" name="publisher" value="<%= game.publishers[0].name %>">
+                <%  } else {  %>
+                  N/A
+                  <input  type="hidden" name="publisher" value="N/A">
+                <%  }  %>
+              </div>
+              
               <p class="release text-muted">
-                <em><%= release.toDateString() %></em>
+                <% if (Date.now() <= release ) { %>
+                  <em class="text-dark bg-danger"><%= release.toDateString() %></em>
+                <% } else { %>
+                  <em class ="text-muted"><%= release.toDateString() %></em>
+                <% } %>
+                
                 <button class="btn btn-link text-success" type="submit">
                   <i class="fas fa-plus"></i>
                 </button>
