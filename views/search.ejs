@@ -1,4 +1,5 @@
 <% include ./partials/header %>
+
   <div class="container" id="gameList">
   <h2 class="text-dark">Search Results for: <em class="text-secondary">"<%= query %>"</em></h2>
   
@@ -14,67 +15,77 @@
     });
     %>
     
+    <form id="addGame" action="/games" method="POST">
+      <input  type="hidden" name="name" value="<%= game.name %>">
+      <input  type="hidden" name="link" value="<%= game.url %>">
+      <input  type="hidden" name="release" value="<%= release %>">
+      
+      <% if (!game.cover) { %>
+        <input  type="hidden" name="icon" value="#">
+      <%} else { %>
+        <input  type="hidden" name="icon" value="<%= game.cover.url  %>">
+      <% } %>
+      
+      <%  if (game.developers) { %>
+        <input  type="hidden" name="developer" value="Developer">  <!-- Using generic developer while expanders are disabled  -->
+      <%  } else {  %>
+        <input  type="hidden" name="developer" value="N/A">
+      <%  }  %>
+      
+      <%  if (game.publishers) { %>
+        <input  type="hidden" name="publisher" value="Publisher">  <!-- Using generic developer while expanders are disabled  -->
+      <%  } else {  %>
+        <input  type="hidden" name="publisher" value="N/A">
+      <%  }  %>
+    </form>
+    
     <div class="card">
       <div class="list-group-item list-group-item-action list-group-item-light">
-        <div class="media">
-          <a href="#">
-            <% if (!game.cover) { %>
-              <!--<img class="img-thumbnail" src="/images/file-image-regular.svg"></img>-->
-              <div class="img-thumbnail"><i class="text-muted fas fa-file-image fa-6x"></i></div>
-            <%} else { %>
-              <img class="img-thumbnail" src="<%= game.cover.url %>"></img>
-            <% } %>
-          </a>
-          <div class="media-body">
-             <form action="/games" method="POST">
-              <input  type="hidden" name="name" value="<%= game.name %>">
-              <input  type="hidden" name="link" value="<%= game.url %>">
-              <input  type="hidden" name="release" value="<%= release %>">
+        <div class="row">
+          
+          <div class="mr-2 col-md-1">
+            <a href="#">
               <% if (!game.cover) { %>
-                <input  type="hidden" name="icon" value="#">
+                <div class="rounded"><i class="text-muted fas fa-file-image fa-6x"></i></div>
               <%} else { %>
-                <input  type="hidden" name="icon" value="<%= game.cover.url  %>">
+                <img class="rounded" src="<%= game.cover.url %>"></img>
               <% } %>
-            
-            
-              <a class="btn btn-link text-muted" data-toggle="collapse" href="#collapse">
-                <strong><%= game.name %></strong>
-              </a>
-              
-              <div class="text-muted">
-                <%  if (game.developers) { %>
-                  <%= game.developers[0].name %>
-                  <input  type="hidden" name="developer" value="<%= game.developers[0].name %>">
-                <%  } else {  %>
-                  N/A
-                  <input  type="hidden" name="developer" value="N/A">
-                <%  }  %>
-              </div>
-              
-              <div class="text-muted">
-                <%  if (game.publishers) { %>
-                  <%= game.publishers[0].name %>
-                  <input  type="hidden" name="publisher" value="<%= game.publishers[0].name %>">
-                <%  } else {  %>
-                  N/A
-                  <input  type="hidden" name="publisher" value="N/A">
-                <%  }  %>
-              </div>
-              
-              <p class="release text-muted">
-                <% if (Date.now() <= release ) { %>
-                  <em class="text-dark bg-danger"><%= release.toDateString() %></em>
-                <% } else { %>
-                  <em class ="text-muted"><%= release.toDateString() %></em>
-                <% } %>
-                
-                <button class="btn btn-link text-success" type="submit">
-                  <i class="fas fa-plus"></i>
-                </button>
-              </p>
-            
-            </form>
+            </a>
           </div>
+          
+          <div class="col-md">
+            <button class="btn btn-link text-success" form="addGame">
+              <i class="fas fa-plus"></i>
+            </button>
+            <a class="text-dark" data-toggle="collapse" href="#collapse">
+              <strong><%= game.name %></strong>
+            </a>
+            
+            <em>
+              <%  if (game.developers) { %>
+                <%= /* game.developers[0].name */  %>
+                Developer, 
+              <%  } else {  %>
+                N/A, 
+              <%  }  %>
+              
+              <%  if (game.publishers) { %>
+                <%= /* game.publishers[0].name */ %>
+                Publisher
+              <%  } else {  %>
+                N/A
+              <%  }  %>
+            </em>
+          </div>
+              
+          <div class="col-md-auto">
+            <% if (Date.now() <= release ) { %>
+              <em class="float-right text-dark bg-danger"><%= release.toDateString() %></em>
+            <% } else { %>
+              <em class="float-right text-muted"><%= release.toDateString() %></em>
+            <% } %>
+          </div>
+            
         </div>
       </div>
       
