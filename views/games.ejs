@@ -2,7 +2,7 @@
           
 <div class="container" id="gameList">
   <% games.forEach(function(game){ %>
-    <form id="removeGame" action="/games/<%= game._id %>?_method=DELETE" method="POST">
+    <form id="removeGame<%= game._id %>" action="/games/<%= game._id %>?_method=DELETE" method="POST">
     </form>
     
     <div class="card">
@@ -16,14 +16,15 @@
           </div>
           
           <div class="col-md">
-            <button class="mx-auto btn btn-link text-danger" form="removeGame">
-              <i class="fas fa-minus"></i>
-            </button>
             <a class="text-dark" data-toggle="collapse" href="#collapse<%=game._id%>">
               <strong><%= game.name %></strong> 
             </a>
             
             <em><%= game.developer %>, <%= game.publisher %></em>
+            
+            <button class="mx-auto badge badge-danger" form="removeGame<%= game._id %>">
+              <i class="fas fa-minus"></i>
+            </button>
           </div>
             
           <div class="col-md-auto">

@@ -51,7 +51,7 @@ app.get("/games/search", function(req, res){
     limit: 50,
     filters: {
       'platforms-eq': 130,
-      'version_parent-not_exists': 1,
+      // 'version_parent-not_exists': 1,
       'game-not_exists': 1
     },
     search: query,
@@ -63,6 +63,7 @@ app.get("/games/search", function(req, res){
     // ]
     
   }, [
+    'id',
     'name',
     'url',
     'release_dates',

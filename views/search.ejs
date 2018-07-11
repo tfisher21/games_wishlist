@@ -6,37 +6,42 @@
   <% data.forEach(function(game) { %>
     
     <%
-    var release;
+    var release   = "Future Release",
+        icon      = "#",
+        developer = "Developer", // Will be "N/A" when expanders are enabled.
+        publisher = "Publisher"; // Will be "N/A" when expanders are enabled.
+    
     game.release_dates.forEach(function(date){
       if (date.platform === 130) {
         release = new Date(date.date);
         return;
       }
     });
+    
+    if (game.cover) {
+      icon = game.cover.url;
+    }
+    
+    // Disabled while expands are disabled.
+    /*
+    if (game.developers) {
+      developer = game.developers[0].name;
+    }
+    
+    if (game.publishers) {
+      publisher = game.publishers[0].name;
+    }
+    */
+    
     %>
     
-    <form id="addGame" action="/games" method="POST">
+    <form id="addGame<%= game.id %>" action="/games" method="POST">
       <input  type="hidden" name="name" value="<%= game.name %>">
       <input  type="hidden" name="link" value="<%= game.url %>">
       <input  type="hidden" name="release" value="<%= release %>">
-      
-      <% if (!game.cover) { %>
-        <input  type="hidden" name="icon" value="#">
-      <%} else { %>
-        <input  type="hidden" name="icon" value="<%= game.cover.url  %>">
-      <% } %>
-      
-      <%  if (game.developers) { %>
-        <input  type="hidden" name="developer" value="Developer">  <!-- Using generic developer while expanders are disabled  -->
-      <%  } else {  %>
-        <input  type="hidden" name="developer" value="N/A">
-      <%  }  %>
-      
-      <%  if (game.publishers) { %>
-        <input  type="hidden" name="publisher" value="Publisher">  <!-- Using generic developer while expanders are disabled  -->
-      <%  } else {  %>
-        <input  type="hidden" name="publisher" value="N/A">
-      <%  }  %>
+      <input  type="hidden" name="icon" value="<%= icon %>">
+      <input  type="hidden" name="developer" value="<%= developer %>">
+      <input  type="hidden" name="publisher" value="<%= publisher %>">
     </form>
     
     <div class="card">
@@ -45,37 +50,26 @@
           
           <div class="mr-2 col-md-1">
             <a href="#">
-              <% if (!game.cover) { %>
+              <% if (icon === "#") { %>
                 <div class="rounded"><i class="text-muted fas fa-file-image fa-6x"></i></div>
               <%} else { %>
-                <img class="rounded" src="<%= game.cover.url %>"></img>
+                <img class="rounded" src="<%= icon %>"></img>
               <% } %>
             </a>
           </div>
           
           <div class="col-md">
-            <button class="btn btn-link text-success" form="addGame">
-              <i class="fas fa-plus"></i>
-            </button>
             <a class="text-dark" data-toggle="collapse" href="#collapse">
               <strong><%= game.name %></strong>
             </a>
             
             <em>
-              <%  if (game.developers) { %>
-                <%= /* game.developers[0].name */  %>
-                Developer, 
-              <%  } else {  %>
-                N/A, 
-              <%  }  %>
-              
-              <%  if (game.publishers) { %>
-                <%= /* game.publishers[0].name */ %>
-                Publisher
-              <%  } else {  %>
-                N/A
-              <%  }  %>
+              <%= developer %>, <%= publisher %>
             </em>
+            
+            <button class="badge badge-success" form="addGame<%= game.id %>">
+              <i class="fas fa-plus"></i>
+            </button>
           </div>
               
           <div class="col-md-auto">
