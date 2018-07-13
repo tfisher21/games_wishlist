@@ -1,22 +1,32 @@
 
-/*NavBar Styling*/
+/* NavBar Styling */
 
 .navbar-brand {
   font-family: 'Carter One', cursive;
 }
 
-/*Restriction Alert Styling*/
+/* Platform Button Styling */
 
-#collapseRestrictions {
-  opacity: 1;
-  text-align: center;
+.PSactive {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
-#collapseRestrictions ul {
-  list-style: none;
+.Xactive {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
 }
 
-/*List Styling*/
+.SwActive {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+/* List Styling */
+
 #gameList {
   padding-top: 10px;
 }
