@@ -15,29 +15,17 @@
     </ul>
     
     <form id="gameSearch" class="form-inline" action="/games/search" method="GET">
-      <!--<div class="btn-group btn-group-sm mx-2" role="group" aria-label="Basic example">-->
-      <!--  <button type="button" class="btn btn-primary"><i class="fab fa-playstation"></i></button>-->
-      <!--  <button type="button" class="btn btn-success"><i class="fab fa-xbox"></i></button>-->
-      <!--  <button type="button" class="btn btn-danger"><i class="fab fa-nintendo-switch"></i></button>-->
-      <!--</div>-->
-      <div class="btn-group btn-group-sm btn-group-toggle mx-2" data-toggle="buttons">
-        <label class="btn btn-secondary PSactive">
-          <input type="checkbox" name="options" id="PlayStation" autocomplete="off" checked><i class="fab fa-playstation"></i>
-        </label>
-        <label class="btn btn-secondary Xactive">
-          <input type="checkbox" name="options" id="Xbox" autocomplete="off"><i class="fab fa-xbox"></i>
-        </label>
-        <label class="btn btn-secondary SwActive">
-          <input type="checkbox" name="options" id="Switch" autocomplete="off"><i class="fab fa-nintendo-switch"></i>
-        </label>
+      <div class="input-group mx-2">
+        <input class="form-control" name="query" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-secondary" type="submit"><i class="fas fa-search"></i></button>
+        </div>
       </div>
-      <input class="form-control mt-2 mt-lg-0 mr-lg-2" name="query" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-sm btn-outline-secondary my-2 my-lg-0 mr-lg-2" type="submit">Search</button>
     </form>
     
     <div class="btn-group nav-item mt-2 mt-lg-0">
-      <a class="btn btn-sm btn-outline-secondary" href="#">Login</a>
-      <a class="btn btn-sm btn-outline-secondary" href="#">Signup</a>
+      <a class="btn btn btn-outline-secondary" href="#">Login</a>
+      <a class="btn btn btn-outline-secondary" href="#">Signup</a>
     </div>
   </div>
 </nav>
