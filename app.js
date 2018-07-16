@@ -10,7 +10,7 @@ var Game        = require("./models/game"),
     seedDB          = require("./seeds");
 
 require("dotenv").load();
-mongoose.connect("mongodb://localhost/crm");
+mongoose.connect("mongodb://" + process.env.mongo_key + "@ds229621.mlab.com:29621/cartridge_recall");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(methodOverride('_method'));

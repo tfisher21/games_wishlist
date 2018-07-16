@@ -44,3 +44,8 @@
 * Move Search out of nav and to the top.
 * We can add searchable DLC at some point.
 * Pagination
+
+### Commit To-Do
+* Remove Developer/Publisher from Game model, Views, and Routes
+* Add six total seeds
+* Migrate database to cloud mongo service

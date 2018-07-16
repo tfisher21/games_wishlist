@@ -8,8 +8,6 @@
     <%
     var release   = "Future Release",
         icon      = "#",
-        developer = "Developer", // Will be "N/A" when expanders are enabled.
-        publisher = "Publisher"; // Will be "N/A" when expanders are enabled.
     
     game.release_dates.forEach(function(date){
       if (date.platform === 130) {
@@ -21,17 +19,6 @@
     if (game.cover) {
       icon = game.cover.url;
     }
-    
-    // Disabled while expands are disabled.
-    /*
-    if (game.developers) {
-      developer = game.developers[0].name;
-    }
-    
-    if (game.publishers) {
-      publisher = game.publishers[0].name;
-    }
-    */
     
     %>
     
@@ -62,10 +49,6 @@
             <a class="text-dark" data-toggle="collapse" href="#collapse">
               <strong><%= game.name %></strong>
             </a>
-            
-            <em>
-              <%= developer %>, <%= publisher %>
-            </em>
             
             <button class="badge badge-success" form="addGame<%= game.id %>">
               <i class="fas fa-plus"></i>

@@ -5,8 +5,6 @@ var gameSchema = new mongoose.Schema({
   link: String,
   release: Date,
   icon: String,
-  developer: String,
-  publisher: String
 });
 
 module.exports = mongoose.model("Game", gameSchema);
