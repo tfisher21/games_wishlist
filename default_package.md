@@ -40,12 +40,15 @@
 * Expand data saved
   * genre
   * platforms
-  * description
 * Move Search out of nav and to the top.
 * We can add searchable DLC at some point.
 * Pagination
+* User Authentication
+* Multiple list options
+    * Owned
+    * Played
+    * Replay
+    * Wishlist
 
 ### Commit To-Do
-* Remove Developer/Publisher from Game model, Views, and Routes
-* Add six total seeds
-* Migrate database to cloud mongo service
+* Add carousel or pagination per 3-5 games
